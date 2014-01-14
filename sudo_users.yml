@@ -1,0 +1,18 @@
+---
+- name: Criação de Usuários
+  hosts: webserver
+  user: teste
+
+  tasks:
+
+  - name: Adicionando usuário Everit nos servidores da Engine
+    user: name=teste state=present password=$1$testete13vre$qzOAqYETj2GpvEMoDYVQV.
+
+  - name: Criando cópia de segurança para alteração do arquivo
+    command: cp -f /etc/sudoers /etc/sudoers.tmp
+
+  - name: Inserir linha no arquivo sudoers
+    lineinfile: dest=/etc/sudoers.tmp state=present regexp='^teste' line='teste ALL=(ALL) ALL'
+
+  - name: Copia e checagem do sudoers original
+    shell: visudo -q -c -f /etc/sudoers.tmp && cp -f /etc/sudoers.tmp /etc/sudoers
