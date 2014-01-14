@@ -5,7 +5,7 @@
 
   tasks:
 
-  - name: Adicionando usuário Everit nos servidores da Engine
+  - name: Adicionando usuário Teste
     user: name=teste state=present password=$1$testete13vre$qzOAqYETj2GpvEMoDYVQV.
 
   - name: Criando cópia de segurança para alteração do arquivo
